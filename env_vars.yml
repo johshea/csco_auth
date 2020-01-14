@@ -1,0 +1,46 @@
+---
+webex_teams:
+    wteams-token: 
+    wteams_baseurl:
+
+meraki_dashboard:
+    meraki-api-key: 
+    meraki_org:
+    meraki_network:
+    meraki_baseurl: https://api.meraki.com/api/v0/
+
+csdwan:
+    sdwan_username: devnetuser
+    sdwan_password: Cisco123!
+    sdwan_port: 8443
+    sdwan_url: https://sandboxsdwan.cisco.com:8443/j_security_check
+    sdwan_encoding: application/x-www-form-urlencoded
+
+
+umbrella:
+    umbrella-auth-type: Basic
+    umbrella-api-key: 
+    umbrella_baseurl: https://management.api.umbrella.com/v1/
+
+dnac:
+    dnac_username: devnetuser
+    dnac_password: Cisco123!
+    dnac_port: 443
+    dnac_ip:
+    dnac_url: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
+
+fmc:
+    fmc_username: admin
+    fmc_password: 
+    fmc_gettoken_url: api/fmc_platform/v1/auth/generatetoken
+    fmc_baseurl: 
+
+aci:
+    apic_ip:
+    apic_username:
+    apic_password:
+
+paramiko:
+    paramiko_port:
+    paramiko_username:
+    paramiko_password:
