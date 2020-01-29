@@ -2,6 +2,8 @@ import requests
 import yaml
 from requests.auth import HTTPBasicAuth
 import urllib3
+import base64
+
 from ncclient import manager
 #import xmltodict
 
@@ -134,5 +136,30 @@ def get_aci_token():
     auth = auth_resp.json()
     token = auth["imdata"][0]["aaaLogin"]["attributes"]["token"]
 
+    return token
 
 
+#Token Auth with DCNM
+def get_dcnm_token():
+    url = handlers['dcnm']['dcnm_baseurl_']+handlers['dcnm']['dcnm_loginpath']
+    auth_vars = (handlers['dcnm']['dcnm_username']+','+handlers['dcnm']['dcnm_password'])
+    payload = "{\"expirationTime\" : 10000000000}\n"
+    base64string = base64.encodestring(bytes(auth_vars, 'utf-8'))
+    auth_temp_str = "Basic " % base64string
+    authstr = auth_temp_str.replace("b\'", "").replace("\\n\'", "");
+    #print(authstr);
+    headers = {
+        'content-type': "application/json",
+        'authorization': authstr,
+        'cache-control': "no-cache"
+    }
+    req = request.post(url, payload, headers)
+
+    resp = req.getresponse()
+    data = resp.read()
+    #print(data)
+    longstr = data.decode("utf-8")
+    strArr = longstr.split("\"")
+    #print(strArr)
+
+    return strArr[3]
