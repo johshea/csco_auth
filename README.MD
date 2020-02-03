@@ -1,2 +1,2 @@
-# Library for Authenticating to Cisco's numeroues platform APIs
+# Library for Authenticating to Cisco's numerous platform APIs
 Under Development
