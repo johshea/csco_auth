@@ -1,3 +1,5 @@
+#
+
 import requests
 import yaml
 from requests.auth import HTTPBasicAuth
@@ -142,24 +144,17 @@ def get_aci_token():
 #Token Auth with DCNM
 def get_dcnm_token():
     url = handlers['dcnm']['dcnm_baseurl_']+handlers['dcnm']['dcnm_loginpath']
-    auth_vars = (handlers['dcnm']['dcnm_username']+','+handlers['dcnm']['dcnm_password'])
-    payload = "{\"expirationTime\" : 10000000000}\n"
-    base64string = base64.encodestring(bytes(auth_vars, 'utf-8'))
-    auth_temp_str = "Basic " % base64string
-    authstr = auth_temp_str.replace("b\'", "").replace("\\n\'", "");
-    #print(authstr);
-    headers = {
-        'content-type': "application/json",
-        'authorization': authstr,
-        'cache-control': "no-cache"
+    auth_vars = (handlers['dcnm']['dcnm_username'] + ','+ handlers['dcnm']['dcnm_password'])
+
+    hdr = {
+        'content-type': "application/json; charset=UTF-8",
+        'cache-control': "no-cache",
+
     }
-    req = request.post(url, payload, headers)
+    req = request.post(url, data=json.dumps(payload_expire), headers=hdr, auth=auth_vars,)
 
-    resp = req.getresponse()
-    data = resp.read()
-    #print(data)
-    longstr = data.decode("utf-8")
-    strArr = longstr.split("\"")
-    #print(strArr)
+    session_id = None
+    if response and (response.status_code == requests.codes.ok):
+        session_id = response.json().get('Dcnm-Token')
 
-    return strArr[3]
+     return Dcnm_Token
