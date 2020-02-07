@@ -7,13 +7,13 @@ meraki_dashboard:
     meraki-api-key: 
     meraki_org:
     meraki_network:
-    meraki_baseurl: https://api.meraki.com/api/v0/
+    meraki_baseurl:
 
 csdwan:
-    sdwan_username: devnetuser
-    sdwan_password: Cisco123!
+    sdwan_username: 
+    sdwan_password: 
     sdwan_port: 8443
-    sdwan_url: https://sandboxsdwan.cisco.com:8443/j_security_check
+    sdwan_url:
     sdwan_encoding: application/x-www-form-urlencoded
 
 
@@ -23,14 +23,14 @@ umbrella:
     umbrella_baseurl: https://management.api.umbrella.com/v1/
 
 dnac:
-    dnac_username: devnetuser
-    dnac_password: Cisco123!
+    dnac_username: 
+    dnac_password: 
     dnac_port: 443
     dnac_ip:
     dnac_url: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
 
 fmc:
-    fmc_username: admin
+    fmc_username: 
     fmc_password: 
     fmc_gettoken_url: api/fmc_platform/v1/auth/generatetoken
     fmc_baseurl: 
